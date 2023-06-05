@@ -10,6 +10,7 @@ import os
 import utils
 import parsing
 import processing
+from rich import print
 
 def main():
     # Check if 'varnames.json' exists
@@ -31,9 +32,13 @@ def main():
                    sep=",", header=None, names=head_perf, index_col=False)
     
     variances = processing.compute_variances(perfs)
-    processing.plot_variances(variances)
+    medians = processing.compute_medians(perfs)
+    compact_variances = processing.compact_lr(variances)
+    print(compact_variances)
+    # processing.plot_variances(compact_variances)
+    processing.plot_variances_scores(compact_variances)
         
 if __name__ == '__main__':
     main()
-
+# 
 # %%
