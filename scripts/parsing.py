@@ -135,7 +135,23 @@ def check_labelled_performance() :
         for s in subjects:
             for e in executions:
                 labelpresence_dict[f"{t}_{s}00{e}"] = f"{t}_{s}00{e}" in list(data["execution"])
-    print(labelpresence_dict)
+    # print(labelpresence_dict)
     utils.dump_json(labelpresence_dict, "labelpresence.json")
     
-check_labelled_performance()
+
+# TODO: Refactor into plotting function
+    # plt.figure(figsize=(15,6))
+    # plt.subplot(3,1,1)
+    # plt.plot(data["MTM_L_pos_x"])
+    # plt.grid("on")
+    # plt.ylabel("RotX")
+    # plt.subplot(3,1,2)
+    # plt.plot(data["MTM_L_pos_y"])
+    # plt.grid("on")
+    # plt.ylabel("RotY")
+    # plt.subplot(3,1,3)
+    # plt.plot(data["MTM_L_pos_z"])
+    # plt.grid("on")
+    # plt.ylabel("RotZ")
+    # plt.xlabel("Time (frames)")
+    # plt.show()
