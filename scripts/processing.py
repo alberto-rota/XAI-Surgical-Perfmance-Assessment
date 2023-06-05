@@ -60,7 +60,39 @@ def compute_variances(perf_df) :
     
 def plot_variances(variances):
     sns.set_theme()
-    sns.catplot(data=variances,x="expertise",y="mtmr_p")
-    plt.xlabel("Expertise")
-    plt.ylabel("MTMR Position Variance")
+    ax=sns.catplot(data=variances,x="expertise",y="mtmr_p",kind="violin")
+    ax.set(ylabel="MTMR Position Variance")
+    
+    ax=sns.catplot(data=variances,x="expertise",y="mtmr_v",kind="violin")
+    ax.set(ylabel="MTMR Velocity Variance")
+    
+    ax=sns.catplot(data=variances,x="expertise",y="mtmr_av",kind="violin")
+    ax.set(ylabel="MTMR AngularVelocity Variance") 
+    
+    ax=sns.catplot(data=variances,x="expertise",y="mtml_p",kind="violin")
+    ax.set(ylabel="MTML Position Variance")
+    
+    ax=sns.catplot(data=variances,x="expertise",y="mtml_v",kind="violin")
+    ax.set(ylabel="MTML Velocity Variance")
+    
+    ax=sns.catplot(data=variances,x="expertise",y="mtml_av",kind="violin")
+    ax.set(ylabel="MTML AngularVelocity Variance") 
+    
+    ax=sns.catplot(data=variances,x="expertise",y="psmr_p",kind="violin")
+    ax.set(ylabel="PSMR Position Variance")
+    
+    ax=sns.catplot(data=variances,x="expertise",y="psmr_v",kind="violin")
+    ax.set(ylabel="PSMR Velocity Variance")
+    
+    ax=sns.catplot(data=variances,x="expertise",y="psmr_av",kind="violin")
+    ax.set(ylabel="PSMR AngularVelocity Variance") 
+    
+    ax=sns.catplot(data=variances,x="expertise",y="psml_p",kind="violin")
+    ax.set(ylabel="PSML Position Variance")
+    
+    ax=sns.catplot(data=variances,x="expertise",y="psml_v",kind="violin")
+    ax.set(ylabel="PSML Velocity Variance")
+    
+    ax=sns.catplot(data=variances,x="expertise",y="psml_av",kind="violin")
+    ax.set(ylabel="PSML AngularVelocity Variance") 
     plt.show()
