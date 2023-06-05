@@ -141,80 +141,49 @@ def compact_lr(perf_df):
     return pd.concat([df_right,df_left])
 
         
-def plot_variances(variances):
+def plot_variances_distributions(variances):
     sns.set_theme()
-    ax=sns.catplot(data=variances,x="expertise",y="mtm_p",kind="violin",hue="hand", split=True)
-    ax.set(ylabel="MTM Position Variance")
+    f, axes = plt.subplots(2,3)
+    sns.violinplot(data=variances,x="expertise",y="mtm_p",hue="hand", split=True,ax=axes[0,0])
+    axes[0,0].set(ylabel="MTM Position",xlabel="")
     
-    ax=sns.catplot(data=variances,x="expertise",y="mtm_v",kind="violin",hue="hand", split=True)
-    ax.set(ylabel="MTM Velocity Variance")
+    sns.violinplot(data=variances,x="expertise",y="mtm_v",hue="hand", split=True,ax=axes[0,1])
+    axes[0,1].set(ylabel="MTM Velocity",xlabel="")
     
-    ax=sns.catplot(data=variances,x="expertise",y="mtm_av",kind="violin",hue="hand", split=True)
-    ax.set(ylabel="MTM AngularVelocity Variance") 
+    sns.violinplot(data=variances,x="expertise",y="mtm_av",hue="hand", split=True,ax=axes[0,2])
+    axes[0,2].set(ylabel="MTM AngularVelocity",xlabel="") 
     
-    # ax=sns.catplot(data=variances,x="expertise",y="mtml_p",kind="violin",hue="hand", split=True)
-    # ax.set(ylabel="MTML Position Variance")
+    sns.violinplot(data=variances,x="expertise",y="psm_p",hue="hand", split=True,ax=axes[1,0])
+    axes[1,0].set(ylabel="PSM Position",xlabel="")
     
-    # ax=sns.catplot(data=variances,x="expertise",y="mtml_v",kind="violin",hue="hand", split=True)
-    # ax.set(ylabel="MTML Velocity Variance")
+    sns.violinplot(data=variances,x="expertise",y="psm_v",hue="hand", split=True,ax=axes[1,1])
+    axes[1,1].set(ylabel="PSM Velocity",xlabel="")
     
-    # ax=sns.catplot(data=variances,x="expertise",y="mtml_av",kind="violin",hue="hand", split=True)
-    # ax.set(ylabel="MTML AngularVelocity Variance") 
-    
-    ax=sns.catplot(data=variances,x="expertise",y="psm_p",kind="violin",hue="hand", split=True)
-    ax.set(ylabel="PSM Position Variance")
-    
-    ax=sns.catplot(data=variances,x="expertise",y="psm_v",kind="violin",hue="hand", split=True)
-    ax.set(ylabel="PSM Velocity Variance")
-    
-    ax=sns.catplot(data=variances,x="expertise",y="psm_av",kind="violin",hue="hand", split=True)
-    ax.set(ylabel="PSM AngularVelocity Variance") 
-    
-    # ax=sns.catplot(data=variances,x="expertise",y="psml_p",kind="violin",hue="hand", split=True)
-    # ax.set(ylabel="PSML Position Variance")
-    
-    # ax=sns.catplot(data=variances,x="expertise",y="psml_v",kind="violin",hue="hand", split=True)
-    # ax.set(ylabel="PSML Velocity Variance")
-    
-    # ax=sns.catplot(data=variances,x="expertise",y="psml_av",kind="violin",hue="hand", split=True)
-    # ax.set(ylabel="PSML AngularVelocity Variance") 
-    plt.show()
+    sns.violinplot(data=variances,x="expertise",y="psm_av",hue="hand", split=True,ax=axes[1,2])
+    axes[1,2].set(ylabel="PSM AngularVelocity",xlabel="") 
+
+    # plt.show()
     
 def plot_variances_scores(variances):
     sns.set_theme()
-    sns.scatterplot(data=variances,x="score",y="mtm_p",) #hue="hand")
-#    ax.set(ylabel="MTM Position Variance")
+    f, axes = plt.subplots(2,3)
+    sns.regplot(data=variances,x="score",y="mtm_p",ax=axes[0,0]) #,hue="hand")
+    axes[0,0].set(ylabel="MTM Position",xlabel="")
 
-    sns.scatterplot(data=variances,x="score",y="mtm_v",) #hue="hand")
-#    ax.set(ylabel="MTM Velocity Variance")
-
-    sns.scatterplot(data=variances,x="score",y="mtm_av",) #hue="hand")
-#    ax.set(ylabel="MTM AngularVelocity Variance") 
-
-    # sns.scatterplot(data=variances,x="score",y="mtml_p",) #hue="hand")
-    ## ax.set(ylabel="MTML Position Variance")
+    sns.regplot(data=variances,x="score",y="mtm_v",ax=axes[0,1]) #,hue="hand")
+    axes[0,1].set(ylabel="MTM Velocity",xlabel="")
     
-    # sns.scatterplot(data=variances,x="score",y="mtml_v",) #hue="hand")
-    ## ax.set(ylabel="MTML Velocity Variance")
+    sns.regplot(data=variances,x="score",y="mtm_av",ax=axes[0,2]) #,hue="hand")
+    axes[0,2].set(ylabel="MTM AngularVelocity",xlabel="") 
     
-    # sns.scatterplot(data=variances,x="score",y="mtml_av",) #hue="hand")
-    ## ax.set(ylabel="MTML AngularVelocity Variance") 
-    
-    sns.scatterplot(data=variances,x="score",y="psm_p",) #hue="hand")
-#    ax.set(ylabel="PSM Position Variance")
+    sns.regplot(data=variances,x="score",y="psm_p",ax=axes[1,0]) #,hue="hand")
+    axes[1,0].set(ylabel="PSM Position",xlabel="")
 
-    sns.scatterplot(data=variances,x="score",y="psm_v",) #hue="hand")
-#    ax.set(ylabel="PSM Velocity Variance")
-
-    sns.scatterplot(data=variances,x="score",y="psm_av",) #hue="hand")
-#    ax.set(ylabel="PSM AngularVelocity Variance") 
-
-    # sns.scatterplot(data=variances,x="score",y="psml_p",) #hue="hand")
-    ## ax.set(ylabel="PSML Position Variance")
+    sns.regplot(data=variances,x="score",y="psm_v",ax=axes[1,1]) #,hue="hand")
+    axes[1,1].set(ylabel="PSM Velocity",xlabel="")
     
-    # sns.scatterplot(data=variances,x="score",y="psml_v",) #hue="hand")
-    ## ax.set(ylabel="PSML Velocity Variance")
+    sns.regplot(data=variances,x="score",y="psm_av",ax=axes[1,2]) #,hue="hand")
+    axes[1,2].set(ylabel="PSM AngularVelocity",xlabel="") 
     
-    # sns.scatterplot(data=variances,x="score",y="psml_av",) #hue="hand")
-    ## ax.set(ylabel="PSML AngularVelocity Variance") 
-    plt.show()
+
+    # plt.show()

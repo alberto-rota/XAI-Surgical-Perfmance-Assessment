@@ -33,11 +33,17 @@ def main():
     
     variances = processing.compute_variances(perfs)
     medians = processing.compute_medians(perfs)
+    compact_medians = processing.compact_lr(medians)
     compact_variances = processing.compact_lr(variances)
-    print(compact_variances)
-    # processing.plot_variances(compact_variances)
+    # print(compact_variances)
+    # print(compact_medians)
+    processing.plot_variances_distributions(compact_variances)
     processing.plot_variances_scores(compact_variances)
-        
+    
+    processing.plot_variances_distributions(compact_medians)
+    processing.plot_variances_scores(compact_medians)
+    plt.show()    
+    
 if __name__ == '__main__':
     main()
 # 
